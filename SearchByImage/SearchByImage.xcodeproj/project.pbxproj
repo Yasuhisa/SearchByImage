@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D962CE421295E0D00AF0663 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D962CE321295E0D00AF0663 /* CameraViewController.swift */; };
+		4D962CEB21297DDF00AF0663 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4D962CEA21297DDF00AF0663 /* Inceptionv3.mlmodel */; };
 		B573C6BE211051A600C53B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C6BD211051A600C53B28 /* AppDelegate.swift */; };
 		B573C6C5211051A600C53B28 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C6C3211051A600C53B28 /* Camera.storyboard */; };
 		B573C6C7211051A900C53B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B573C6C6211051A900C53B28 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		4D962CE321295E0D00AF0663 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		4D962CEA21297DDF00AF0663 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Inceptionv3.mlmodel; path = ../../../../../Downloads/Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		B573C6BA211051A600C53B28 /* SearchByImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchByImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C6BD211051A600C53B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B573C6C4211051A600C53B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D962CE521297D7F00AF0663 /* MLModel */ = {
+			isa = PBXGroup;
+			children = (
+				4D962CEA21297DDF00AF0663 /* Inceptionv3.mlmodel */,
+			);
+			path = MLModel;
+			sourceTree = "<group>";
+		};
 		B573C6B1211051A600C53B28 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 			children = (
 				B573C6D5211053C900C53B28 /* Storyboard */,
 				B573C6D82110582300C53B28 /* ViewController */,
+				4D962CE521297D7F00AF0663 /* MLModel */,
 				B573C6BD211051A600C53B28 /* AppDelegate.swift */,
 				B573C6C6211051A900C53B28 /* Assets.xcassets */,
 				B573C6CB211051A900C53B28 /* Info.plist */,
@@ -152,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B573C6BE211051A600C53B28 /* AppDelegate.swift in Sources */,
+				4D962CEB21297DDF00AF0663 /* Inceptionv3.mlmodel in Sources */,
 				4D962CE421295E0D00AF0663 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
