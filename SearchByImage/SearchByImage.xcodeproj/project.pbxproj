@@ -7,27 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D962CE421295E0D00AF0663 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D962CE321295E0D00AF0663 /* CameraViewController.swift */; };
 		B573C6BE211051A600C53B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C6BD211051A600C53B28 /* AppDelegate.swift */; };
-		B573C6C5211051A600C53B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C6C3211051A600C53B28 /* Main.storyboard */; };
+		B573C6C5211051A600C53B28 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C6C3211051A600C53B28 /* Camera.storyboard */; };
 		B573C6C7211051A900C53B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B573C6C6211051A900C53B28 /* Assets.xcassets */; };
 		B573C6CA211051A900C53B28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C6C8211051A900C53B28 /* LaunchScreen.storyboard */; };
-		B573C6D2211053B700C53B28 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C6D1211053B700C53B28 /* Camera.storyboard */; };
-		B573C6D4211053C300C53B28 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C6D3211053C300C53B28 /* History.storyboard */; };
-		B573C6DC2110587A00C53B28 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C6DB2110587A00C53B28 /* CameraViewController.swift */; };
-		B573C6DE2110588E00C53B28 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C6DD2110588E00C53B28 /* HistoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D962CE321295E0D00AF0663 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		B573C6BA211051A600C53B28 /* SearchByImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchByImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C6BD211051A600C53B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B573C6C4211051A600C53B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B573C6C4211051A600C53B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
 		B573C6C6211051A900C53B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B573C6C9211051A900C53B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B573C6CB211051A900C53B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B573C6D1211053B700C53B28 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
-		B573C6D3211053C300C53B28 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
-		B573C6DB2110587A00C53B28 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		B573C6DD2110588E00C53B28 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +58,6 @@
 				B573C6D82110582300C53B28 /* ViewController */,
 				B573C6BD211051A600C53B28 /* AppDelegate.swift */,
 				B573C6C6211051A900C53B28 /* Assets.xcassets */,
-				B573C6C8211051A900C53B28 /* LaunchScreen.storyboard */,
 				B573C6CB211051A900C53B28 /* Info.plist */,
 			);
 			path = SearchByImage;
@@ -73,9 +66,8 @@
 		B573C6D5211053C900C53B28 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B573C6C3211051A600C53B28 /* Main.storyboard */,
-				B573C6D1211053B700C53B28 /* Camera.storyboard */,
-				B573C6D3211053C300C53B28 /* History.storyboard */,
+				B573C6C8211051A900C53B28 /* LaunchScreen.storyboard */,
+				B573C6C3211051A600C53B28 /* Camera.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -83,8 +75,7 @@
 		B573C6D82110582300C53B28 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B573C6DB2110587A00C53B28 /* CameraViewController.swift */,
-				B573C6DD2110588E00C53B28 /* HistoryViewController.swift */,
+				4D962CE321295E0D00AF0663 /* CameraViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -148,10 +139,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B573C6CA211051A900C53B28 /* LaunchScreen.storyboard in Resources */,
-				B573C6D2211053B700C53B28 /* Camera.storyboard in Resources */,
 				B573C6C7211051A900C53B28 /* Assets.xcassets in Resources */,
-				B573C6D4211053C300C53B28 /* History.storyboard in Resources */,
-				B573C6C5211051A600C53B28 /* Main.storyboard in Resources */,
+				B573C6C5211051A600C53B28 /* Camera.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,21 +151,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B573C6DC2110587A00C53B28 /* CameraViewController.swift in Sources */,
 				B573C6BE211051A600C53B28 /* AppDelegate.swift in Sources */,
-				B573C6DE2110588E00C53B28 /* HistoryViewController.swift in Sources */,
+				4D962CE421295E0D00AF0663 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B573C6C3211051A600C53B28 /* Main.storyboard */ = {
+		B573C6C3211051A600C53B28 /* Camera.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B573C6C4211051A600C53B28 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Camera.storyboard;
 			sourceTree = "<group>";
 		};
 		B573C6C8211051A900C53B28 /* LaunchScreen.storyboard */ = {
