@@ -12,6 +12,9 @@ import Vision
 
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
+    @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var detectedLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,8 +43,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         captureSession.startRunning()
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        view.layer.addSublayer(previewLayer)
-        previewLayer.frame = view.frame
+        cameraView.layer.addSublayer(previewLayer)
+        previewLayer.frame.size = cameraView.frame.size
+        previewLayer.frame.origin = CGPoint(x: 0, y: 0)
         
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "Video Queue"))
@@ -75,6 +79,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             DispatchQueue.main.async {
                 // You can change UI on main thread.
                 print(firstResult)
+                self.detectedLabel.text = firstResult.identifier
             }
         }
         

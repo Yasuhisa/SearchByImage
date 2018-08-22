@@ -17,9 +17,45 @@
                     <view key="view" contentMode="scaleToFill" id="Ap1-Aa-jG1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ter-Ge-ihH">
+                                <rect key="frame" x="16" y="36" width="343" height="449"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPl-jj-bLh">
+                                <rect key="frame" x="16" y="501" width="343" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="検出中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czB-p7-Yfj">
+                                        <rect key="frame" x="8" y="8" width="52" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="7IA-Gm-fqd"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="czB-p7-Yfj" secondAttribute="trailing" constant="20" symbolic="YES" id="EOF-Wn-47Q"/>
+                                    <constraint firstItem="czB-p7-Yfj" firstAttribute="leading" secondItem="VPl-jj-bLh" secondAttribute="leading" constant="8" id="Zbh-Ey-50p"/>
+                                    <constraint firstItem="czB-p7-Yfj" firstAttribute="top" secondItem="VPl-jj-bLh" secondAttribute="top" constant="8" id="oo2-J6-i3j"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ter-Ge-ihH" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="8gR-ub-8tV"/>
+                            <constraint firstItem="ter-Ge-ihH" firstAttribute="top" secondItem="zuG-q6-Sja" secondAttribute="top" constant="16" id="Ajc-Kj-XYw"/>
+                            <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="ter-Ge-ihH" secondAttribute="trailing" constant="16" id="HjD-u0-ouP"/>
+                            <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="VPl-jj-bLh" secondAttribute="trailing" constant="16" id="N4g-9O-QgO"/>
+                            <constraint firstItem="VPl-jj-bLh" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="NRA-ud-da5"/>
+                            <constraint firstItem="zuG-q6-Sja" firstAttribute="bottom" secondItem="VPl-jj-bLh" secondAttribute="bottom" constant="16" id="hNO-1i-Nyx"/>
+                            <constraint firstItem="VPl-jj-bLh" firstAttribute="top" secondItem="ter-Ge-ihH" secondAttribute="bottom" constant="16" id="njA-Ve-AWO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zuG-q6-Sja"/>
                     </view>
+                    <connections>
+                        <outlet property="cameraView" destination="ter-Ge-ihH" id="gdB-KM-jLJ"/>
+                        <outlet property="detectedLabel" destination="czB-p7-Yfj" id="hZq-4m-bmJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tB5-4i-h8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
