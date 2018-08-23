@@ -18,6 +18,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.cameraView.frame = view.frame
         setupCaptureSession()
     }
 
@@ -43,9 +44,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         captureSession.startRunning()
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        cameraView.layer.addSublayer(previewLayer)
-        previewLayer.frame.size = cameraView.frame.size
-        previewLayer.frame.origin = CGPoint(x: 0, y: 0)
+        previewLayer.videoGravity = .resizeAspectFill
+        previewLayer.frame = self.cameraView.frame
+        self.cameraView.layer.addSublayer(previewLayer)
         
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "Video Queue"))
