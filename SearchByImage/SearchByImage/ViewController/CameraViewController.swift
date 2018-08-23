@@ -57,9 +57,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     ///
     /// - Parameters:
     ///   - output: output
-    ///   - sampleBuffer: sampleBuffer
-    ///   - connection: connection
-    func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    ///   - didOutput sampleBuffer: sampleBuffer
+    ///   - from connection: connection
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
