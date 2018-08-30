@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bF8-ca-6V5">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Walkthrough View Controller-->
+        <scene sceneID="4eg-CI-RVX">
+            <objects>
+                <viewController id="bF8-ca-6V5" customClass="WalkthroughViewController" customModule="SearchByImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l5I-QB-9bn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="pld-JB-ZSM">
+                                <rect key="frame" x="168" y="614" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttk-Lf-sBg">
+                                <rect key="frame" x="138" y="576" width="98" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="スキップ"/>
+                                <connections>
+                                    <action selector="close:" destination="bF8-ca-6V5" eventType="touchUpInside" id="JRv-iy-pof"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKC-dF-zsw">
+                                <rect key="frame" x="340" y="20" width="35" height="647"/>
+                                <state key="normal" title="次！ "/>
+                                <connections>
+                                    <action selector="nextPage" destination="bF8-ca-6V5" eventType="touchUpInside" id="uRh-6K-VQ7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqG-vc-lqm">
+                                <rect key="frame" x="0.0" y="20" width="46" height="647"/>
+                                <state key="normal" title="　前！"/>
+                                <connections>
+                                    <action selector="prevPage" destination="bF8-ca-6V5" eventType="touchUpInside" id="Wfa-qN-Exh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9E0-jo-jVx" firstAttribute="trailing" secondItem="HKC-dF-zsw" secondAttribute="trailing" id="0bu-os-s8y"/>
+                            <constraint firstItem="pld-JB-ZSM" firstAttribute="centerX" secondItem="l5I-QB-9bn" secondAttribute="centerX" id="4ZG-kC-yYW"/>
+                            <constraint firstItem="ttk-Lf-sBg" firstAttribute="centerX" secondItem="l5I-QB-9bn" secondAttribute="centerX" id="5tn-4C-TZJ"/>
+                            <constraint firstItem="HKC-dF-zsw" firstAttribute="top" secondItem="9E0-jo-jVx" secondAttribute="top" id="APa-Y0-W4I"/>
+                            <constraint firstItem="9E0-jo-jVx" firstAttribute="bottom" secondItem="pld-JB-ZSM" secondAttribute="bottom" constant="16" id="HbB-Yw-9kh"/>
+                            <constraint firstItem="KqG-vc-lqm" firstAttribute="top" secondItem="9E0-jo-jVx" secondAttribute="top" id="TYy-yf-gBC"/>
+                            <constraint firstItem="KqG-vc-lqm" firstAttribute="leading" secondItem="9E0-jo-jVx" secondAttribute="leading" id="Ufr-5h-Sd9"/>
+                            <constraint firstItem="9E0-jo-jVx" firstAttribute="bottom" secondItem="HKC-dF-zsw" secondAttribute="bottom" id="V0Q-k8-qJX"/>
+                            <constraint firstItem="9E0-jo-jVx" firstAttribute="bottom" secondItem="ttk-Lf-sBg" secondAttribute="bottom" constant="50" id="aBB-BB-afs"/>
+                            <constraint firstItem="9E0-jo-jVx" firstAttribute="bottom" secondItem="KqG-vc-lqm" secondAttribute="bottom" id="sfe-R7-tvE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9E0-jo-jVx"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="ttk-Lf-sBg" id="qcw-5y-XsM"/>
+                        <outlet property="nextButton" destination="HKC-dF-zsw" id="QMp-ym-mlv"/>
+                        <outlet property="pageControl" destination="pld-JB-ZSM" id="g9a-ts-l8Z"/>
+                        <outlet property="prevButton" destination="KqG-vc-lqm" id="8Lv-ef-Fd8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PWw-D9-uK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135" y="339"/>
+        </scene>
+        <!--Walkthrough First Page View Controller-->
+        <scene sceneID="sSC-Xj-Exd">
+            <objects>
+                <viewController storyboardIdentifier="page1" id="DDG-ec-irZ" customClass="WalkthroughFirstPageViewController" customModule="SearchByImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ngD-Ig-yel">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial_01" translatesAutoresizingMaskIntoConstraints="NO" id="YHa-sU-PbG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lb-o0-RCh">
+                                <rect key="frame" x="16" y="70" width="343" height="57.5"/>
+                                <string key="text">カメラに食べ物を映すと
+何の食べ物かわかるよ</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MsQ-Ny-ajd">
+                                <rect key="frame" x="16" y="464" width="343" height="53"/>
+                                <string key="text">良い子のみんなは
+カメラの使用を許可してね</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.52854821506199978" green="1" blue="0.55070451429151657" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YHa-sU-PbG" firstAttribute="leading" secondItem="Ow4-0X-LJg" secondAttribute="leading" id="0Es-To-Eiy"/>
+                            <constraint firstItem="1lb-o0-RCh" firstAttribute="top" secondItem="Ow4-0X-LJg" secondAttribute="top" constant="50" id="Asr-kl-EG1"/>
+                            <constraint firstItem="Ow4-0X-LJg" firstAttribute="bottom" secondItem="MsQ-Ny-ajd" secondAttribute="bottom" constant="150" id="DTa-g5-p1w"/>
+                            <constraint firstItem="MsQ-Ny-ajd" firstAttribute="leading" secondItem="Ow4-0X-LJg" secondAttribute="leading" constant="16" id="WNO-Tv-DQo"/>
+                            <constraint firstItem="YHa-sU-PbG" firstAttribute="top" secondItem="Ow4-0X-LJg" secondAttribute="top" id="WhC-Aa-b17"/>
+                            <constraint firstItem="1lb-o0-RCh" firstAttribute="leading" secondItem="Ow4-0X-LJg" secondAttribute="leading" constant="16" id="YHY-qc-wzo"/>
+                            <constraint firstItem="Ow4-0X-LJg" firstAttribute="trailing" secondItem="YHa-sU-PbG" secondAttribute="trailing" id="bWP-UO-V2Q"/>
+                            <constraint firstItem="Ow4-0X-LJg" firstAttribute="bottom" secondItem="YHa-sU-PbG" secondAttribute="bottom" id="pcg-fg-i4X"/>
+                            <constraint firstAttribute="trailing" secondItem="1lb-o0-RCh" secondAttribute="trailing" constant="16" id="w5n-ih-BMl"/>
+                            <constraint firstItem="Ow4-0X-LJg" firstAttribute="trailing" secondItem="MsQ-Ny-ajd" secondAttribute="trailing" constant="16" id="ysf-kt-NbL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ow4-0X-LJg"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Zoom"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="animateAlpha" value="YES"/>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="-1" y="-1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="0.0" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XkX-Nh-8di" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="897" y="339"/>
+        </scene>
+        <!--Walkthrough Second Page View Controller-->
+        <scene sceneID="dJu-h0-qjo">
+            <objects>
+                <viewController storyboardIdentifier="page2" id="Cdo-xY-FCs" customClass="WalkthroughSecondPageViewController" customModule="SearchByImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hUn-dt-EId">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial_02" translatesAutoresizingMaskIntoConstraints="NO" id="X6K-bV-Jhl">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人工知能ってすごいらしい！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zB-c8-rzC">
+                                <rect key="frame" x="16" y="82" width="343" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.47886270176943424" green="1" blue="0.99431360495103582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="64r-6h-VpX" firstAttribute="trailing" secondItem="X6K-bV-Jhl" secondAttribute="trailing" id="02Y-W7-hQK"/>
+                            <constraint firstItem="1zB-c8-rzC" firstAttribute="top" secondItem="64r-6h-VpX" secondAttribute="top" constant="62" id="Hba-bg-9Kn"/>
+                            <constraint firstItem="1zB-c8-rzC" firstAttribute="leading" secondItem="64r-6h-VpX" secondAttribute="leading" constant="16" id="dbw-ZP-ZSq"/>
+                            <constraint firstItem="64r-6h-VpX" firstAttribute="bottom" secondItem="X6K-bV-Jhl" secondAttribute="bottom" id="oeJ-OM-53s"/>
+                            <constraint firstItem="64r-6h-VpX" firstAttribute="trailing" secondItem="1zB-c8-rzC" secondAttribute="trailing" constant="16" id="x0c-YB-dib"/>
+                            <constraint firstItem="X6K-bV-Jhl" firstAttribute="top" secondItem="64r-6h-VpX" secondAttribute="top" id="yPZ-0A-LeM"/>
+                            <constraint firstItem="X6K-bV-Jhl" firstAttribute="leading" secondItem="64r-6h-VpX" secondAttribute="leading" id="yl9-mR-uBg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="64r-6h-VpX"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Zoom"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="animateAlpha" value="YES"/>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="1" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="0.0" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eua-4q-h4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1682" y="339"/>
+        </scene>
+        <!--Walkthrough End Page View Controller-->
+        <scene sceneID="WN8-gT-jFu">
+            <objects>
+                <viewController storyboardIdentifier="end" id="xGC-F0-qrj" customClass="WalkthroughEndPageViewController" customModule="SearchByImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nr0-nE-RyA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial_03" translatesAutoresizingMaskIntoConstraints="NO" id="ZlT-lI-ygt">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="331-YH-9xm">
+                                <rect key="frame" x="16" y="70" width="343" height="57.5"/>
+                                <string key="text">このアプリを使って
+マッチョになろう！</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial_04" translatesAutoresizingMaskIntoConstraints="NO" id="JA9-PS-bJN">
+                                <rect key="frame" x="0.0" y="267" width="375" height="400"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.69812515426223354" blue="0.90911623355866911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JA9-PS-bJN" firstAttribute="leading" secondItem="P3F-vb-EhB" secondAttribute="leading" id="DGH-FK-rjd"/>
+                            <constraint firstItem="ZlT-lI-ygt" firstAttribute="leading" secondItem="P3F-vb-EhB" secondAttribute="leading" id="L92-0Y-ro4"/>
+                            <constraint firstItem="P3F-vb-EhB" firstAttribute="trailing" secondItem="JA9-PS-bJN" secondAttribute="trailing" id="RlI-kC-7vG"/>
+                            <constraint firstItem="JA9-PS-bJN" firstAttribute="top" secondItem="P3F-vb-EhB" secondAttribute="top" constant="247" id="UgF-0p-l5A"/>
+                            <constraint firstItem="P3F-vb-EhB" firstAttribute="bottom" secondItem="JA9-PS-bJN" secondAttribute="bottom" id="a7C-dX-MMQ"/>
+                            <constraint firstItem="ZlT-lI-ygt" firstAttribute="top" secondItem="P3F-vb-EhB" secondAttribute="top" constant="100" id="f1I-4S-f27"/>
+                            <constraint firstItem="P3F-vb-EhB" firstAttribute="bottom" secondItem="ZlT-lI-ygt" secondAttribute="bottom" id="fUO-LJ-7LR"/>
+                            <constraint firstItem="331-YH-9xm" firstAttribute="leading" secondItem="P3F-vb-EhB" secondAttribute="leading" constant="16" id="hpD-qS-S6W"/>
+                            <constraint firstItem="P3F-vb-EhB" firstAttribute="trailing" secondItem="331-YH-9xm" secondAttribute="trailing" constant="16" id="ilA-Da-HR9"/>
+                            <constraint firstItem="P3F-vb-EhB" firstAttribute="trailing" secondItem="ZlT-lI-ygt" secondAttribute="trailing" id="j7R-K2-48A"/>
+                            <constraint firstItem="331-YH-9xm" firstAttribute="top" secondItem="P3F-vb-EhB" secondAttribute="top" constant="50" id="xPU-qZ-S5D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="P3F-vb-EhB"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Curve"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="animateAlpha" value="YES"/>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="0.0" y="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="0.0" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8tg-XO-Dwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2479" y="339"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tutorial_01" width="181" height="200"/>
+        <image name="tutorial_02" width="400" height="400"/>
+        <image name="tutorial_03" width="400" height="269"/>
+        <image name="tutorial_04" width="400" height="400"/>
+    </resources>
+</document>

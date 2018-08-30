@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let defaults = UserDefaults.standard
+        let storyboardName = defaults.bool(forKey: Constants.DISPLAYED_WALKTHROUGH) ? Constants.STORYBOARD_CAMERA : Constants.STORYBOARD_WALKTHROUGH
+        
+        let storybord = UIStoryboard(name: storyboardName, bundle: nil)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.rootViewController = storybord.instantiateInitialViewController()
+        window!.makeKeyAndVisible()
+        
         return true
     }
 
