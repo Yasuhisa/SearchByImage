@@ -15,6 +15,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var detectedLabel: UILabel!
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +28,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - IBAction
     @IBAction func infoButtonPressed(_ sender: Any) {
         let storybord = UIStoryboard(name: Constants.STORYBOARD_WALKTHROUGH, bundle: nil)
         let viewController = storybord.instantiateInitialViewController() as? WalkthroughViewController
@@ -36,6 +38,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
     }
     
+    // MARK: - Video Capture Session
     /// Setup Video Capture Session
     func setupCaptureSession() {
         let captureSession = AVCaptureSession()

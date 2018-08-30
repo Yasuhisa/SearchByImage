@@ -14,6 +14,7 @@ class WalkthroughViewController: BWWalkthroughViewController, BWWalkthroughViewC
     private lazy var endPageIndex = self.pageControl?.numberOfPages
     var fromCameraView = false
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +35,7 @@ class WalkthroughViewController: BWWalkthroughViewController, BWWalkthroughViewC
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - BWWalkthroughViewControllerDelegate
     func walkthroughCloseButtonPressed() {
         showNextView()
     }
@@ -48,6 +50,7 @@ class WalkthroughViewController: BWWalkthroughViewController, BWWalkthroughViewC
         }
     }
     
+    // MARK: - Private
     func showNextView() {
         if !fromCameraView {
             // first launch
