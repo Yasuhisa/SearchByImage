@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4D492E0D2137B3BE00B2E997 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4D492E0C2137B3BE00B2E997 /* Inceptionv3.mlmodel */; };
+		4D492E0F2137B51700B2E997 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D492E0E2137B51700B2E997 /* Walkthrough.storyboard */; };
+		4D492E112137B53500B2E997 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D492E102137B53500B2E997 /* WalkthroughViewController.swift */; };
+		4D492E152137B63600B2E997 /* Constansts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D492E142137B63600B2E997 /* Constansts.swift */; };
 		4D962CE421295E0D00AF0663 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D962CE321295E0D00AF0663 /* CameraViewController.swift */; };
 		AEA7E0174ECD86EFB9FC372A /* Pods_SearchByImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951D3969BF52904D3246A9F2 /* Pods_SearchByImage.framework */; };
 		B573C6BE211051A600C53B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C6BD211051A600C53B28 /* AppDelegate.swift */; };
@@ -19,6 +22,9 @@
 /* Begin PBXFileReference section */
 		03ED8B019838C1F9F26CC7FD /* Pods-SearchByImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchByImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-SearchByImage/Pods-SearchByImage.release.xcconfig"; sourceTree = "<group>"; };
 		4D492E0C2137B3BE00B2E997 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
+		4D492E0E2137B51700B2E997 /* Walkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
+		4D492E102137B53500B2E997 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
+		4D492E142137B63600B2E997 /* Constansts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constansts.swift; sourceTree = "<group>"; };
 		4D962CE321295E0D00AF0663 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		951D3969BF52904D3246A9F2 /* Pods_SearchByImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchByImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C6BA211051A600C53B28 /* SearchByImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchByImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +90,7 @@
 				B573C6D82110582300C53B28 /* ViewController */,
 				4D962CE521297D7F00AF0663 /* MLModel */,
 				B573C6BD211051A600C53B28 /* AppDelegate.swift */,
+				4D492E142137B63600B2E997 /* Constansts.swift */,
 				B573C6C6211051A900C53B28 /* Assets.xcassets */,
 				B573C6CB211051A900C53B28 /* Info.plist */,
 			);
@@ -94,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				B573C6C8211051A900C53B28 /* LaunchScreen.storyboard */,
+				4D492E0E2137B51700B2E997 /* Walkthrough.storyboard */,
 				B573C6C3211051A600C53B28 /* Camera.storyboard */,
 			);
 			path = Storyboard;
@@ -102,6 +110,7 @@
 		B573C6D82110582300C53B28 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4D492E102137B53500B2E997 /* WalkthroughViewController.swift */,
 				4D962CE321295E0D00AF0663 /* CameraViewController.swift */,
 			);
 			path = ViewController;
@@ -176,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B573C6CA211051A900C53B28 /* LaunchScreen.storyboard in Resources */,
+				4D492E0F2137B51700B2E997 /* Walkthrough.storyboard in Resources */,
 				B573C6C7211051A900C53B28 /* Assets.xcassets in Resources */,
 				B573C6C5211051A600C53B28 /* Camera.storyboard in Resources */,
 			);
@@ -228,8 +238,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B573C6BE211051A600C53B28 /* AppDelegate.swift in Sources */,
+				4D492E112137B53500B2E997 /* WalkthroughViewController.swift in Sources */,
 				4D492E0D2137B3BE00B2E997 /* Inceptionv3.mlmodel in Sources */,
 				4D962CE421295E0D00AF0663 /* CameraViewController.swift in Sources */,
+				4D492E152137B63600B2E997 /* Constansts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
