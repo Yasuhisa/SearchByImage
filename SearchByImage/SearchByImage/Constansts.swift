@@ -10,7 +10,7 @@ import UIKit
 
 struct Constants {
     /// userdefaults key, first start
-    static let FIRST_START = "first-start"
+    static let DISPLAYED_WALKTHROUGH = "displayed-walkthrough"
     
     /// storyboard name, Walkthrough
     static let STORYBOARD_WALKTHROUGH = "Walkthrough"

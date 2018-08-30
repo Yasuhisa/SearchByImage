@@ -27,6 +27,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func infoButtonPressed(_ sender: Any) {
+        let storybord = UIStoryboard(name: Constants.STORYBOARD_WALKTHROUGH, bundle: nil)
+        let viewController = storybord.instantiateInitialViewController() as? WalkthroughViewController
+        if let walkthroughViewController = viewController {
+            walkthroughViewController.fromCameraView = true
+            present(walkthroughViewController, animated: true, completion: nil)
+        }
+    }
     
     /// Setup Video Capture Session
     func setupCaptureSession() {

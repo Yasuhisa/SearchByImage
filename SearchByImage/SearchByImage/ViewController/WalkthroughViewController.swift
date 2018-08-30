@@ -12,6 +12,7 @@ import BWWalkthrough
 class WalkthroughViewController: BWWalkthroughViewController, BWWalkthroughViewControllerDelegate {
     
     private lazy var endPageIndex = self.pageControl?.numberOfPages
+    var fromCameraView = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +35,7 @@ class WalkthroughViewController: BWWalkthroughViewController, BWWalkthroughViewC
     }
     
     func walkthroughCloseButtonPressed() {
-        let storybord = UIStoryboard(name: Constants.STORYBOARD_CAMERA, bundle: nil)
-        let cameraViewController = storybord.instantiateInitialViewController()
-        
-        let window = UIApplication.shared.keyWindow
-        window?.rootViewController = cameraViewController
-        window?.makeKeyAndVisible()
+        showNextView()
     }
     
     func walkthroughPageDidChange(_ pageNumber: Int) {
@@ -50,6 +46,27 @@ class WalkthroughViewController: BWWalkthroughViewController, BWWalkthroughViewC
             // TODO: Use localize string
             super.closeButton?.setTitle("スキップ", for: .normal)
         }
+    }
+    
+    func showNextView() {
+        if !fromCameraView {
+            // first launch
+            let defaults = UserDefaults.standard
+            defaults.set(true, forKey: Constants.DISPLAYED_WALKTHROUGH)
+            defaults.synchronize()
+            
+            let storybord = UIStoryboard(name: Constants.STORYBOARD_CAMERA, bundle: nil)
+            let cameraViewController = storybord.instantiateInitialViewController()
+            
+            let window = UIApplication.shared.keyWindow
+            window?.rootViewController = cameraViewController
+            window?.makeKeyAndVisible()
+            
+            return
+        }
+        
+        // from camera view
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
