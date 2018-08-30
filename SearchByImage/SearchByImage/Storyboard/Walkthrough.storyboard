@@ -17,9 +17,54 @@
                     <view key="view" contentMode="scaleToFill" id="l5I-QB-9bn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="pld-JB-ZSM">
+                                <rect key="frame" x="168" y="614" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttk-Lf-sBg">
+                                <rect key="frame" x="138" y="576" width="98" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="スキップ"/>
+                                <connections>
+                                    <action selector="close:" destination="bF8-ca-6V5" eventType="touchUpInside" id="JRv-iy-pof"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKC-dF-zsw">
+                                <rect key="frame" x="340" y="20" width="35" height="647"/>
+                                <state key="normal" title="次！ "/>
+                                <connections>
+                                    <action selector="nextPage" destination="bF8-ca-6V5" eventType="touchUpInside" id="uRh-6K-VQ7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqG-vc-lqm">
+                                <rect key="frame" x="0.0" y="20" width="46" height="647"/>
+                                <state key="normal" title="　前！"/>
+                                <connections>
+                                    <action selector="prevPage" destination="bF8-ca-6V5" eventType="touchUpInside" id="Wfa-qN-Exh"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9E0-jo-jVx" firstAttribute="trailing" secondItem="HKC-dF-zsw" secondAttribute="trailing" id="0bu-os-s8y"/>
+                            <constraint firstItem="pld-JB-ZSM" firstAttribute="centerX" secondItem="l5I-QB-9bn" secondAttribute="centerX" id="4ZG-kC-yYW"/>
+                            <constraint firstItem="ttk-Lf-sBg" firstAttribute="centerX" secondItem="l5I-QB-9bn" secondAttribute="centerX" id="5tn-4C-TZJ"/>
+                            <constraint firstItem="HKC-dF-zsw" firstAttribute="top" secondItem="9E0-jo-jVx" secondAttribute="top" id="APa-Y0-W4I"/>
+                            <constraint firstItem="9E0-jo-jVx" firstAttribute="bottom" secondItem="pld-JB-ZSM" secondAttribute="bottom" constant="16" id="HbB-Yw-9kh"/>
+                            <constraint firstItem="KqG-vc-lqm" firstAttribute="top" secondItem="9E0-jo-jVx" secondAttribute="top" id="TYy-yf-gBC"/>
+                            <constraint firstItem="KqG-vc-lqm" firstAttribute="leading" secondItem="9E0-jo-jVx" secondAttribute="leading" id="Ufr-5h-Sd9"/>
+                            <constraint firstItem="9E0-jo-jVx" firstAttribute="bottom" secondItem="HKC-dF-zsw" secondAttribute="bottom" id="V0Q-k8-qJX"/>
+                            <constraint firstItem="9E0-jo-jVx" firstAttribute="bottom" secondItem="ttk-Lf-sBg" secondAttribute="bottom" constant="50" id="aBB-BB-afs"/>
+                            <constraint firstItem="9E0-jo-jVx" firstAttribute="bottom" secondItem="KqG-vc-lqm" secondAttribute="bottom" id="sfe-R7-tvE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="9E0-jo-jVx"/>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="ttk-Lf-sBg" id="qcw-5y-XsM"/>
+                        <outlet property="nextButton" destination="HKC-dF-zsw" id="QMp-ym-mlv"/>
+                        <outlet property="pageControl" destination="pld-JB-ZSM" id="g9a-ts-l8Z"/>
+                        <outlet property="prevButton" destination="KqG-vc-lqm" id="8Lv-ef-Fd8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWw-D9-uK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,28 +97,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqe-p2-KJH">
-                                <rect key="frame" x="157" y="587" width="62" height="30"/>
-                                <state key="normal" title="スキップ"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.52854821506199978" green="1" blue="0.55070451429151657" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YHa-sU-PbG" firstAttribute="leading" secondItem="Ow4-0X-LJg" secondAttribute="leading" id="0Es-To-Eiy"/>
                             <constraint firstItem="1lb-o0-RCh" firstAttribute="top" secondItem="Ow4-0X-LJg" secondAttribute="top" constant="50" id="Asr-kl-EG1"/>
                             <constraint firstItem="Ow4-0X-LJg" firstAttribute="bottom" secondItem="MsQ-Ny-ajd" secondAttribute="bottom" constant="150" id="DTa-g5-p1w"/>
-                            <constraint firstItem="Ow4-0X-LJg" firstAttribute="bottom" secondItem="sqe-p2-KJH" secondAttribute="bottom" constant="50" id="JQz-8o-XgE"/>
                             <constraint firstItem="MsQ-Ny-ajd" firstAttribute="leading" secondItem="Ow4-0X-LJg" secondAttribute="leading" constant="16" id="WNO-Tv-DQo"/>
                             <constraint firstItem="YHa-sU-PbG" firstAttribute="top" secondItem="Ow4-0X-LJg" secondAttribute="top" id="WhC-Aa-b17"/>
                             <constraint firstItem="1lb-o0-RCh" firstAttribute="leading" secondItem="Ow4-0X-LJg" secondAttribute="leading" constant="16" id="YHY-qc-wzo"/>
                             <constraint firstItem="Ow4-0X-LJg" firstAttribute="trailing" secondItem="YHa-sU-PbG" secondAttribute="trailing" id="bWP-UO-V2Q"/>
                             <constraint firstItem="Ow4-0X-LJg" firstAttribute="bottom" secondItem="YHa-sU-PbG" secondAttribute="bottom" id="pcg-fg-i4X"/>
-                            <constraint firstItem="sqe-p2-KJH" firstAttribute="centerX" secondItem="ngD-Ig-yel" secondAttribute="centerX" id="unt-wg-XiU"/>
                             <constraint firstAttribute="trailing" secondItem="1lb-o0-RCh" secondAttribute="trailing" constant="16" id="w5n-ih-BMl"/>
                             <constraint firstItem="Ow4-0X-LJg" firstAttribute="trailing" secondItem="MsQ-Ny-ajd" secondAttribute="trailing" constant="16" id="ysf-kt-NbL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ow4-0X-LJg"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Zoom"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="animateAlpha" value="YES"/>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="-1" y="-1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="0.0" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XkX-Nh-8di" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,17 +145,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yE8-35-pzj">
-                                <rect key="frame" x="157" y="587" width="62" height="30"/>
-                                <state key="normal" title="スキップ"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.47886270176943424" green="1" blue="0.99431360495103582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="64r-6h-VpX" firstAttribute="trailing" secondItem="X6K-bV-Jhl" secondAttribute="trailing" id="02Y-W7-hQK"/>
                             <constraint firstItem="1zB-c8-rzC" firstAttribute="top" secondItem="64r-6h-VpX" secondAttribute="top" constant="62" id="Hba-bg-9Kn"/>
-                            <constraint firstItem="yE8-35-pzj" firstAttribute="centerX" secondItem="hUn-dt-EId" secondAttribute="centerX" id="VoU-BC-s1v"/>
-                            <constraint firstItem="64r-6h-VpX" firstAttribute="bottom" secondItem="yE8-35-pzj" secondAttribute="bottom" constant="50" id="XPL-Iy-qYp"/>
                             <constraint firstItem="1zB-c8-rzC" firstAttribute="leading" secondItem="64r-6h-VpX" secondAttribute="leading" constant="16" id="dbw-ZP-ZSq"/>
                             <constraint firstItem="64r-6h-VpX" firstAttribute="bottom" secondItem="X6K-bV-Jhl" secondAttribute="bottom" id="oeJ-OM-53s"/>
                             <constraint firstItem="64r-6h-VpX" firstAttribute="trailing" secondItem="1zB-c8-rzC" secondAttribute="trailing" constant="16" id="x0c-YB-dib"/>
@@ -115,6 +158,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="64r-6h-VpX"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Zoom"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="animateAlpha" value="YES"/>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="1" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="0.0" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eua-4q-h4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,16 +195,9 @@
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial_04" translatesAutoresizingMaskIntoConstraints="NO" id="JA9-PS-bJN">
                                 <rect key="frame" x="0.0" y="267" width="375" height="400"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yen-Rz-nfA">
-                                <rect key="frame" x="126.5" y="576" width="122" height="41"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
-                                <state key="normal" title="わかった！"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.69812515426223354" blue="0.90911623355866911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="P3F-vb-EhB" firstAttribute="bottom" secondItem="Yen-Rz-nfA" secondAttribute="bottom" constant="50" id="1tQ-ZJ-227"/>
-                            <constraint firstItem="Yen-Rz-nfA" firstAttribute="centerX" secondItem="Nr0-nE-RyA" secondAttribute="centerX" id="4Gw-m5-89g"/>
                             <constraint firstItem="JA9-PS-bJN" firstAttribute="leading" secondItem="P3F-vb-EhB" secondAttribute="leading" id="DGH-FK-rjd"/>
                             <constraint firstItem="ZlT-lI-ygt" firstAttribute="leading" secondItem="P3F-vb-EhB" secondAttribute="leading" id="L92-0Y-ro4"/>
                             <constraint firstItem="P3F-vb-EhB" firstAttribute="trailing" secondItem="JA9-PS-bJN" secondAttribute="trailing" id="RlI-kC-7vG"/>
@@ -166,6 +212,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P3F-vb-EhB"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Curve"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="animateAlpha" value="YES"/>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="0.0" y="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="0.0" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tg-XO-Dwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

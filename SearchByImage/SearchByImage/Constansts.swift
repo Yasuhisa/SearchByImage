@@ -16,6 +16,8 @@ struct Constants {
     static let STORYBOARD_WALKTHROUGH = "Walkthrough"
     /// storyboard name, Camera
     static let STORYBOARD_CAMERA = "Camera"
+    
+    /// walkthrough
     static let VIEWCONTROLLER_WALKTHROUGH_FIRST = "page1"
     static let VIEWCONTROLLER_WALKTHROUGH_SECOND = "page2"
     static let VIEWCONTROLLER_WALKTHROUGH_END = "end"

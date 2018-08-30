@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import BWWalkthrough
 
-class WalkthroughEndPageViewController: UIViewController {
+class WalkthroughEndPageViewController: BWWalkthroughPageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
