@@ -18,13 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let defaults = UserDefaults.standard
-        let storyboardName = defaults.bool(forKey: Constants.FIRST_START) ? Constants.STORYBOARD_CAMERA : Constants.STORYBOARD_WALKTHROUGH
-        
-        if !defaults.bool(forKey: Constants.FIRST_START) {
-            // when first start, display walkthrough
-            defaults.set(true, forKey: Constants.FIRST_START)
-            defaults.synchronize()
-        }
+//        let storyboardName = defaults.bool(forKey: Constants.FIRST_START) ? Constants.STORYBOARD_CAMERA : Constants.STORYBOARD_WALKTHROUGH
+        let storyboardName = Constants.STORYBOARD_WALKTHROUGH
         
         let storybord: UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
         window = UIWindow(frame: UIScreen.main.bounds)

@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import BWWalkthrough
 
-class WalkthroughViewController: UIViewController {
+class WalkthroughViewController: BWWalkthroughViewController, BWWalkthroughViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let page1 = self.storyboard?.instantiateViewController(withIdentifier: Constants.VIEWCONTROLLER_WALKTHROUGH_FIRST)
+        let page2 = self.storyboard?.instantiateViewController(withIdentifier: Constants.VIEWCONTROLLER_WALKTHROUGH_SECOND)
+        let pageEnd = self.storyboard?.instantiateViewController(withIdentifier: Constants.VIEWCONTROLLER_WALKTHROUGH_END)
+        
+        self.add(viewController: page1 ?? UIViewController())
+        self.add(viewController: page2 ?? UIViewController())
+        self.add(viewController: pageEnd ?? UIViewController())
     }
 
     override func didReceiveMemoryWarning() {
