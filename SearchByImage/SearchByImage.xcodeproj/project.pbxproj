@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D492E0D2137B3BE00B2E997 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4D492E0C2137B3BE00B2E997 /* Inceptionv3.mlmodel */; };
 		4D962CE421295E0D00AF0663 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D962CE321295E0D00AF0663 /* CameraViewController.swift */; };
-		4D962CEB21297DDF00AF0663 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4D962CEA21297DDF00AF0663 /* Inceptionv3.mlmodel */; };
 		AEA7E0174ECD86EFB9FC372A /* Pods_SearchByImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951D3969BF52904D3246A9F2 /* Pods_SearchByImage.framework */; };
 		B573C6BE211051A600C53B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C6BD211051A600C53B28 /* AppDelegate.swift */; };
 		B573C6C5211051A600C53B28 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C6C3211051A600C53B28 /* Camera.storyboard */; };
@@ -18,8 +18,8 @@
 
 /* Begin PBXFileReference section */
 		03ED8B019838C1F9F26CC7FD /* Pods-SearchByImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchByImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-SearchByImage/Pods-SearchByImage.release.xcconfig"; sourceTree = "<group>"; };
+		4D492E0C2137B3BE00B2E997 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		4D962CE321295E0D00AF0663 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		4D962CEA21297DDF00AF0663 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Inceptionv3.mlmodel; path = ../../../../../Downloads/Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		951D3969BF52904D3246A9F2 /* Pods_SearchByImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchByImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C6BA211051A600C53B28 /* SearchByImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchByImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C6BD211051A600C53B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		4D962CE521297D7F00AF0663 /* MLModel */ = {
 			isa = PBXGroup;
 			children = (
-				4D962CEA21297DDF00AF0663 /* Inceptionv3.mlmodel */,
+				4D492E0C2137B3BE00B2E997 /* Inceptionv3.mlmodel */,
 			);
 			path = MLModel;
 			sourceTree = "<group>";
@@ -189,15 +189,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SearchByImage/Pods-SearchByImage-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BWWalkthrough/BWWalkthrough.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWWalkthrough.framework",
 			);
@@ -211,15 +207,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SearchByImage-checkManifestLockResult.txt",
 			);
@@ -236,7 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B573C6BE211051A600C53B28 /* AppDelegate.swift in Sources */,
-				4D962CEB21297DDF00AF0663 /* Inceptionv3.mlmodel in Sources */,
+				4D492E0D2137B3BE00B2E997 /* Inceptionv3.mlmodel in Sources */,
 				4D962CE421295E0D00AF0663 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
