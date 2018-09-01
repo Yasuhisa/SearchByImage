@@ -39,6 +39,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
+        if self.detectedLabel.text?.count == 0 {
+            return
+        }
+        
         var urlString = "https://www.google.co.jp/search?q=\(self.detectedLabel.text ?? "food")&tbm=isch"
         
         // If multiple results, replace url parameter with Google Image Search format url.
@@ -50,7 +54,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         if let url = URL(string: urlString) {
             let safariViewController = SFSafariViewController(url: url)
-            safariViewController.modalTransitionStyle = .crossDissolve
+            safariViewController.modalPresentationStyle = .popover
             present(safariViewController, animated: true, completion: nil)
         }
     }
