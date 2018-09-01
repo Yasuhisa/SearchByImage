@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import Vision
+import SafariServices
 
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
@@ -35,6 +36,23 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if let walkthroughViewController = viewController {
             walkthroughViewController.fromCameraView = true
             present(walkthroughViewController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        var urlString = "https://www.google.co.jp/search?q=\(self.detectedLabel.text ?? "food")&tbm=isch"
+        
+        // If multiple results, replace url parameter with Google Image Search format url.
+        if urlString.contains(",") {
+            // delete [,], replace whitespace with [+]
+            urlString = urlString.replacingOccurrences(of: ",", with: "")
+                .replacingOccurrences(of: " ", with: "+")
+        }
+        
+        if let url = URL(string: urlString) {
+            let safariViewController = SFSafariViewController(url: url)
+            safariViewController.modalTransitionStyle = .crossDissolve
+            present(safariViewController, animated: true, completion: nil)
         }
     }
     
