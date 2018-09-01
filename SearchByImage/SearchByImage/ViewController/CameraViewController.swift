@@ -32,8 +32,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     // MARK: - IBAction
     @IBAction func infoButtonPressed(_ sender: Any) {
         let storybord = UIStoryboard(name: Constants.STORYBOARD_WALKTHROUGH, bundle: nil)
-        let viewController = storybord.instantiateInitialViewController() as? WalkthroughViewController
-        if let walkthroughViewController = viewController {
+        if let walkthroughViewController = storybord.instantiateInitialViewController() as? WalkthroughViewController {
             walkthroughViewController.fromCameraView = true
             present(walkthroughViewController, animated: true, completion: nil)
         }
