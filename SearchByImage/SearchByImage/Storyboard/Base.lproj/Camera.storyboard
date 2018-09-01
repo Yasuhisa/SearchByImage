@@ -42,10 +42,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REC-Pg-EUB">
-                                <rect key="frame" x="337" y="36" width="22" height="22"/>
+                                <rect key="frame" x="331" y="36" width="28" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="sUd-pi-tGR"/>
-                                    <constraint firstAttribute="width" constant="22" id="zLZ-M2-g8p"/>
+                                    <constraint firstAttribute="height" constant="28" id="sUd-pi-tGR"/>
+                                    <constraint firstAttribute="width" constant="28" id="zLZ-M2-g8p"/>
                                 </constraints>
                                 <state key="normal" image="ic_search"/>
                                 <connections>
