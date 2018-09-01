@@ -41,6 +41,17 @@
                                     <action selector="infoButtonPressed:" destination="chZ-Iv-dsz" eventType="touchUpInside" id="9sq-6H-cKQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REC-Pg-EUB">
+                                <rect key="frame" x="331" y="36" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="sUd-pi-tGR"/>
+                                    <constraint firstAttribute="width" constant="28" id="zLZ-M2-g8p"/>
+                                </constraints>
+                                <state key="normal" image="ic_search"/>
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="chZ-Iv-dsz" eventType="touchUpInside" id="dyn-gQ-hAX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -48,8 +59,10 @@
                             <constraint firstItem="czB-p7-Yfj" firstAttribute="top" secondItem="VPl-jj-bLh" secondAttribute="top" constant="8" id="EhY-sU-DSR"/>
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="VPl-jj-bLh" secondAttribute="trailing" constant="16" id="N4g-9O-QgO"/>
                             <constraint firstItem="VPl-jj-bLh" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="NRA-ud-da5"/>
+                            <constraint firstItem="REC-Pg-EUB" firstAttribute="top" secondItem="zuG-q6-Sja" secondAttribute="top" constant="16" id="O05-QE-ONE"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" id="TJB-Fa-6x0"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="top" secondItem="Ap1-Aa-jG1" secondAttribute="top" id="TVK-VH-ch3"/>
+                            <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="REC-Pg-EUB" secondAttribute="trailing" constant="16" id="Yu2-1E-pYf"/>
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="bottom" secondItem="VPl-jj-bLh" secondAttribute="bottom" constant="16" id="hNO-1i-Nyx"/>
                             <constraint firstItem="czB-p7-Yfj" firstAttribute="leading" secondItem="VPl-jj-bLh" secondAttribute="leading" constant="8" id="ic3-VQ-9wA"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="trailing" secondItem="zuG-q6-Sja" secondAttribute="trailing" id="mcE-4f-qfR"/>
@@ -69,4 +82,7 @@
             <point key="canvasLocation" x="973.60000000000002" y="184.85757121439281"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_search" width="54" height="54"/>
+    </resources>
 </document>

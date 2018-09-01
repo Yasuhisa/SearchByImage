@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import Vision
+import SafariServices
 
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
@@ -22,7 +23,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         self.cameraView.frame = view.frame
         setupCaptureSession()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -30,12 +31,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     // MARK: - IBAction
     @IBAction func infoButtonPressed(_ sender: Any) {
-        let storybord = UIStoryboard(name: Constants.STORYBOARD_WALKTHROUGH, bundle: nil)
-        let viewController = storybord.instantiateInitialViewController() as? WalkthroughViewController
-        if let walkthroughViewController = viewController {
-            walkthroughViewController.fromCameraView = true
-            present(walkthroughViewController, animated: true, completion: nil)
-        }
+        showWalkthroughViewController()
+    }
+    
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        showSafariViewController()
     }
     
     // MARK: - Video Capture Session
@@ -96,6 +96,39 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
         
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([coreMLRequest])
+    }
+    
+    // MARK: - Private
+    func showWalkthroughViewController() {
+        let storybord = UIStoryboard(name: Constants.STORYBOARD_WALKTHROUGH, bundle: nil)
+        if let walkthroughViewController = storybord.instantiateInitialViewController() as? WalkthroughViewController {
+            walkthroughViewController.fromCameraView = true
+            present(walkthroughViewController, animated: true, completion: nil)
+        }
+    }
+    
+    func showSafariViewController() {
+        if self.detectedLabel.text?.count == 0 {
+            return
+        }
+        
+        var urlString = "https://www.google.co.jp/search?q=\(self.detectedLabel.text ?? "food")&tbm=isch"
+        
+        // If multiple results, replace url parameter with Google Image Search format url.
+        if urlString.contains(",") {
+            // delete [,], replace whitespace with [+]
+            urlString = urlString.replacingOccurrences(of: ",", with: "")
+                .replacingOccurrences(of: " ", with: "+")
+        }
+        
+        if let url = URL(string: urlString) {
+            let safariViewController = SFSafariViewController(url: url)
+            safariViewController.modalPresentationStyle = .popover
+            safariViewController.preferredBarTintColor = UIColor.orange
+            safariViewController.preferredControlTintColor = UIColor.white
+            
+            present(safariViewController, animated: true, completion: nil)
+        }
     }
     
 }
