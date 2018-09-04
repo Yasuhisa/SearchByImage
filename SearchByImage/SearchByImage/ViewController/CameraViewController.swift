@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import AVKit
-import Vision
 import SafariServices
 import Photos
 
