@@ -119,6 +119,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         UIApplication.shared.statusBarStyle = .lightContent
+        picker.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Private
