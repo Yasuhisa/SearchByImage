@@ -10,8 +10,11 @@ import UIKit
 import AVKit
 import Vision
 import SafariServices
+import Photos
 
-class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    private let visionRequest = VisionRequest()
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var detectedLabel: UILabel!
@@ -39,11 +42,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     @IBAction func photoButtonPressed(_ sender: Any) {
-        // TODO
+        showPhotoLibrary()
     }
     
     // MARK: - Video Capture Session
-    /// Setup Video Capture Session
     func setupCaptureSession() {
         let captureSession = AVCaptureSession()
         captureSession.sessionPreset = .photo
@@ -68,38 +70,34 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         captureSession.addOutput(dataOutput)
     }
     
-    
-    /// Capture Output Delegate method
-    ///
-    /// - Parameters:
-    ///   - output: output
-    ///   - didOutput sampleBuffer: sampleBuffer
-    ///   - from connection: connection
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            return
-        }
-        
-        guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else {
-            return
-        }
-        
-        let coreMLRequest = VNCoreMLRequest(model: model) { (request, error) in
-            guard let results = request.results as? [VNClassificationObservation] else {
-                return
+        visionRequest.observeFromSampleBuffer(sampleBuffer: sampleBuffer) { (results, error) in
+            // firstResult
+            guard let firstResult = results.first else { return }
+
+            DispatchQueue.main.async {
+                // Update UI in this block
+                self.detectedLabel.text = firstResult.identifier
+                // TODO: firstResult.confidence を使って精度が低い場合は処理しない
             }
-            guard let firstResult = results.first else {
-                return
-            }
+        }
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        
+        visionRequest.observeFromImage(image: originalImage) { (results, error) in
+            // firstResult
+            guard let firstResult = results.first else { return }
             
             DispatchQueue.main.async {
-                // You can change UI on main thread.
-                print(firstResult)
+                // Update UI in this block
                 self.detectedLabel.text = firstResult.identifier
+                // TODO: firstResult.confidence を使って精度が低い場合は処理しない
+                picker.dismiss(animated: true, completion: nil)
             }
         }
-        
-        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([coreMLRequest])
     }
     
     // MARK: - Private
@@ -133,6 +131,36 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
             present(safariViewController, animated: true, completion: nil)
         }
+    }
+    
+    func showPhotoLibrary() {
+        PHPhotoLibrary.requestAuthorization { [weak self] status in
+            if status == PHAuthorizationStatus.denied {
+                // Unauthorized
+                self?.showUnAuthorizedAlert()
+            }
+            
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.delegate = self
+            
+            self?.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func showUnAuthorizedAlert() {
+        guard let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") else { return }
+        
+        let alertController = UIAlertController(
+            title: "アクセスできません",
+            message: "設定アプリで「\(appName)」の写真の使用を許可してください。", // Application name
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK",
+                                     style: .cancel,
+                                     handler: nil)
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
 }
