@@ -10,6 +10,11 @@ import UIKit
 import SafariServices
 import Photos
 
+enum SearchMode: Int {
+    case movie
+    case picture
+}
+
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let visionRequest = VisionRequest()
@@ -93,6 +98,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
 
         self.segmentedControl.selectedSegmentIndex = SearchMode.picture.rawValue
@@ -108,6 +115,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 picker.dismiss(animated: true, completion: nil)
             }
         }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     // MARK: - Private
@@ -144,6 +155,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     func showPhotoLibrary() {
+        UIApplication.shared.statusBarStyle = .default
+        
         PHPhotoLibrary.requestAuthorization { [weak self] status in
             if status == PHAuthorizationStatus.denied {
                 // Unauthorized
@@ -151,7 +164,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
             
             let imagePickerController = UIImagePickerController()
-            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.sourceType = .savedPhotosAlbum
             imagePickerController.delegate = self
             
             self?.present(imagePickerController, animated: true, completion: nil)
