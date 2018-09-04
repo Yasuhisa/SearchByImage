@@ -63,6 +63,16 @@
                                     <action selector="photoButtonPressed:" destination="chZ-Iv-dsz" eventType="touchUpInside" id="WDV-Kq-3hi"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UNz-Ap-5AI">
+                                <rect key="frame" x="133" y="36" width="109" height="29"/>
+                                <segments>
+                                    <segment title="動画"/>
+                                    <segment title="静止画"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlValueChanged:" destination="chZ-Iv-dsz" eventType="valueChanged" id="FpY-5i-9oz"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -76,7 +86,9 @@
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" id="TJB-Fa-6x0"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="top" secondItem="Ap1-Aa-jG1" secondAttribute="top" id="TVK-VH-ch3"/>
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="REC-Pg-EUB" secondAttribute="trailing" constant="16" id="Yu2-1E-pYf"/>
+                            <constraint firstItem="UNz-Ap-5AI" firstAttribute="centerX" secondItem="Ap1-Aa-jG1" secondAttribute="centerX" id="Zzr-i6-gc0"/>
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="bottom" secondItem="VPl-jj-bLh" secondAttribute="bottom" constant="16" id="hNO-1i-Nyx"/>
+                            <constraint firstItem="UNz-Ap-5AI" firstAttribute="top" secondItem="zuG-q6-Sja" secondAttribute="top" constant="16" id="i6j-iB-Thk"/>
                             <constraint firstItem="czB-p7-Yfj" firstAttribute="leading" secondItem="VPl-jj-bLh" secondAttribute="leading" constant="8" id="ic3-VQ-9wA"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="trailing" secondItem="zuG-q6-Sja" secondAttribute="trailing" id="mcE-4f-qfR"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="bottom" secondItem="zuG-q6-Sja" secondAttribute="bottom" id="mxA-IJ-Hwo"/>
@@ -88,6 +100,7 @@
                     <connections>
                         <outlet property="cameraView" destination="ter-Ge-ihH" id="wyp-13-fOG"/>
                         <outlet property="detectedLabel" destination="czB-p7-Yfj" id="hZq-4m-bmJ"/>
+                        <outlet property="segmentedControl" destination="UNz-Ap-5AI" id="iH4-1F-afU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tB5-4i-h8o" userLabel="First Responder" sceneMemberID="firstResponder"/>

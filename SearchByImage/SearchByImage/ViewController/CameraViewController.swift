@@ -16,6 +16,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var detectedLabel: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -41,6 +42,13 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     @IBAction func photoButtonPressed(_ sender: Any) {
         showPhotoLibrary()
+    }
+    
+    @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        if self.segmentedControl.selectedSegmentIndex == SearchMode.picture.rawValue {
+            self.detectedLabel.text = ""
+            showPhotoLibrary()
+        }
     }
     
     // MARK: - Video Capture Session
@@ -75,7 +83,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
             DispatchQueue.main.async {
                 // Update UI in this block
-                self.detectedLabel.text = firstResult.identifier
+                if self.segmentedControl.selectedSegmentIndex == SearchMode.movie.rawValue {
+                    self.detectedLabel.text = firstResult.identifier
+                }
                 // TODO: firstResult.confidence を使って精度が低い場合は処理しない
             }
         }
@@ -84,6 +94,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+
+        self.segmentedControl.selectedSegmentIndex = SearchMode.picture.rawValue
         
         visionRequest.observeFromImage(image: originalImage) { (results, error) in
             // firstResult
