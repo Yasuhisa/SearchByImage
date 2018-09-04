@@ -38,6 +38,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         showSafariViewController()
     }
     
+    @IBAction func photoButtonPressed(_ sender: Any) {
+        // TODO
+    }
+    
     // MARK: - Video Capture Session
     /// Setup Video Capture Session
     func setupCaptureSession() {
