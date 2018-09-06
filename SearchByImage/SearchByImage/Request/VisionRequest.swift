@@ -23,14 +23,10 @@ class VisionRequest: NSObject {
     ///   - sampleBuffer: captured buffer
     ///   - completionHandler: use observation results this closure
     func observeFromSampleBuffer(sampleBuffer: CMSampleBuffer, completionHandler: CompletionHandler) -> Void {
-        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            return
-        }
+        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
         let coreMLRequest = VNCoreMLRequest(model: model) { (request, error) in
-            guard let results = request.results as? [VNClassificationObservation] else {
-                return
-            }
+            guard let results = request.results as? [VNClassificationObservation] else { return }
             
             completionHandler?(results, error)
         }
@@ -44,14 +40,10 @@ class VisionRequest: NSObject {
     ///   - image: UIImage
     ///   - completionHandler: use observation results this closure
     func observeFromImage(image: UIImage, completionHandler: CompletionHandler) {
-        guard let pixelBuffer = image.pixelBuffer() else {
-            return
-        }
+        guard let pixelBuffer = image.pixelBuffer() else { return }
         
         let coreMLRequest = VNCoreMLRequest(model: model) { (request, error) in
-            guard let results = request.results as? [VNClassificationObservation] else {
-                return
-            }
+            guard let results = request.results as? [VNClassificationObservation] else { return }
             
             completionHandler?(results, error)
         }

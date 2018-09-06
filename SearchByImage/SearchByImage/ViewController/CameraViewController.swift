@@ -61,12 +61,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let captureSession = AVCaptureSession()
         captureSession.sessionPreset = .photo
         
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else {
-            return
-        }
-        guard let input = try? AVCaptureDeviceInput(device: captureDevice) else {
-            return
-        }
+        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
+        guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
         
         captureSession.addInput(input)
         captureSession.startRunning()
