@@ -63,6 +63,33 @@
                                     <action selector="photoButtonPressed:" destination="chZ-Iv-dsz" eventType="touchUpInside" id="WDV-Kq-3hi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精度（スライドで調節可、動画のみ）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brc-Nx-88w">
+                                <rect key="frame" x="60" y="462" width="294.5" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXP-Oe-xqq">
+                                <rect key="frame" x="325" y="497.5" width="35" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="zNg-Yf-I1p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Yw-bl-z2N">
+                                <rect key="frame" x="58" y="494" width="254" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="D2O-4j-D7Q"/>
+                                    <constraint firstAttribute="height" constant="29" id="GMU-nG-otD"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="confidenceSliderValueChanged:" destination="chZ-Iv-dsz" eventType="valueChanged" id="KvX-PZ-wQA"/>
+                                </connections>
+                            </slider>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UNz-Ap-5AI">
                                 <rect key="frame" x="133" y="36" width="109" height="29"/>
                                 <segments>
@@ -83,22 +110,31 @@
                             <constraint firstItem="VPl-jj-bLh" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="NRA-ud-da5"/>
                             <constraint firstItem="REC-Pg-EUB" firstAttribute="top" secondItem="zuG-q6-Sja" secondAttribute="top" constant="16" id="O05-QE-ONE"/>
                             <constraint firstItem="GlS-6n-eIh" firstAttribute="top" secondItem="VPl-jj-bLh" secondAttribute="top" constant="-36" id="OIg-7W-oiV"/>
+                            <constraint firstItem="3Yw-bl-z2N" firstAttribute="centerY" secondItem="GlS-6n-eIh" secondAttribute="centerY" id="RBn-05-wL6"/>
+                            <constraint firstItem="brc-Nx-88w" firstAttribute="top" secondItem="3Yw-bl-z2N" secondAttribute="top" constant="-32" id="Snk-kp-lYY"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" id="TJB-Fa-6x0"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="top" secondItem="Ap1-Aa-jG1" secondAttribute="top" id="TVK-VH-ch3"/>
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="REC-Pg-EUB" secondAttribute="trailing" constant="16" id="Yu2-1E-pYf"/>
                             <constraint firstItem="UNz-Ap-5AI" firstAttribute="centerX" secondItem="Ap1-Aa-jG1" secondAttribute="centerX" id="Zzr-i6-gc0"/>
+                            <constraint firstItem="3Yw-bl-z2N" firstAttribute="leading" secondItem="GlS-6n-eIh" secondAttribute="trailing" constant="16" id="byu-OF-5hv"/>
+                            <constraint firstItem="brc-Nx-88w" firstAttribute="leading" secondItem="3Yw-bl-z2N" secondAttribute="leading" id="fKi-Rf-RJW"/>
+                            <constraint firstItem="VXP-Oe-xqq" firstAttribute="trailing" secondItem="3Yw-bl-z2N" secondAttribute="trailing" constant="50" id="h5n-x0-I0G"/>
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="bottom" secondItem="VPl-jj-bLh" secondAttribute="bottom" constant="16" id="hNO-1i-Nyx"/>
                             <constraint firstItem="UNz-Ap-5AI" firstAttribute="top" secondItem="zuG-q6-Sja" secondAttribute="top" constant="16" id="i6j-iB-Thk"/>
                             <constraint firstItem="czB-p7-Yfj" firstAttribute="leading" secondItem="VPl-jj-bLh" secondAttribute="leading" constant="8" id="ic3-VQ-9wA"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="trailing" secondItem="zuG-q6-Sja" secondAttribute="trailing" id="mcE-4f-qfR"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="bottom" secondItem="zuG-q6-Sja" secondAttribute="bottom" id="mxA-IJ-Hwo"/>
                             <constraint firstItem="1Ik-l6-HL0" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="r2C-uG-7PO"/>
+                            <constraint firstItem="VXP-Oe-xqq" firstAttribute="centerY" secondItem="3Yw-bl-z2N" secondAttribute="centerY" id="uqY-1A-gCO"/>
                             <constraint firstItem="VPl-jj-bLh" firstAttribute="trailing" secondItem="czB-p7-Yfj" secondAttribute="trailing" constant="8" id="xGy-Zn-6hd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zuG-q6-Sja"/>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="ter-Ge-ihH" id="wyp-13-fOG"/>
+                        <outlet property="confidenceAccuracyLabel" destination="VXP-Oe-xqq" id="veg-v4-Jfu"/>
+                        <outlet property="confidenceSlider" destination="3Yw-bl-z2N" id="DY7-Cp-vHa"/>
+                        <outlet property="describeLabel" destination="brc-Nx-88w" id="pDT-wq-CSg"/>
                         <outlet property="detectedLabel" destination="czB-p7-Yfj" id="hZq-4m-bmJ"/>
                         <outlet property="segmentedControl" destination="UNz-Ap-5AI" id="iH4-1F-afU"/>
                     </connections>

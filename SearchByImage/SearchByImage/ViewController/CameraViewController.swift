@@ -22,6 +22,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var detectedLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var confidenceSlider: UISlider!
+    @IBOutlet weak var describeLabel: UILabel!
+    @IBOutlet weak var confidenceAccuracyLabel: UILabel!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -56,6 +59,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
     }
     
+    @IBAction func confidenceSliderValueChanged(_ sender: Any) {
+        let confidenceAccuracy = Int(self.confidenceSlider.value * 100.0)
+        self.confidenceAccuracyLabel.text = "\(confidenceAccuracy)%"
+    }
+    
     // MARK: - Video Capture Session
     func setupCaptureSession() {
         let captureSession = AVCaptureSession()
@@ -81,13 +89,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         visionRequest.observeFromSampleBuffer(sampleBuffer: sampleBuffer) { (results, error) in
             // firstResult
             guard let firstResult = results.first else { return }
-
+            
             DispatchQueue.main.async {
                 // Update UI in this block
-                if self.segmentedControl.selectedSegmentIndex == SearchMode.movie.rawValue {
+                if self.segmentedControl.selectedSegmentIndex == SearchMode.movie.rawValue &&
+                    firstResult.confidence > self.confidenceSlider.value {
+                    // firstResult.confidence value is higher than slider value
                     self.detectedLabel.text = firstResult.identifier
                 }
-                // TODO: firstResult.confidence を使って精度が低い場合は処理しない
             }
         }
     }
@@ -97,7 +106,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         UIApplication.shared.statusBarStyle = .lightContent
         
         guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-
+        
         self.segmentedControl.selectedSegmentIndex = SearchMode.picture.rawValue
         
         visionRequest.observeFromImage(image: originalImage) { (results, error) in
@@ -107,7 +116,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             DispatchQueue.main.async {
                 // Update UI in this block
                 self.detectedLabel.text = firstResult.identifier
-                // TODO: firstResult.confidence を使って精度が低い場合は処理しない
                 picker.dismiss(animated: true, completion: nil)
             }
         }
