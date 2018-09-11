@@ -22,6 +22,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlo-h3-Xjo">
+                                <rect key="frame" x="16" y="96" width="343" height="350"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPl-jj-bLh">
                                 <rect key="frame" x="16" y="531" width="343" height="120"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,9 +109,9 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="1Ik-l6-HL0" firstAttribute="top" secondItem="zuG-q6-Sja" secondAttribute="top" constant="16" id="7Yp-04-YJA"/>
+                            <constraint firstItem="GlS-6n-eIh" firstAttribute="leading" secondItem="1Ik-l6-HL0" secondAttribute="trailing" constant="-22" id="97I-Kx-vCg"/>
                             <constraint firstItem="czB-p7-Yfj" firstAttribute="top" secondItem="VPl-jj-bLh" secondAttribute="top" constant="8" id="EhY-sU-DSR"/>
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="VPl-jj-bLh" secondAttribute="trailing" constant="16" id="N4g-9O-QgO"/>
-                            <constraint firstItem="GlS-6n-eIh" firstAttribute="leading" secondItem="1Ik-l6-HL0" secondAttribute="leading" id="NF6-je-V26"/>
                             <constraint firstItem="VPl-jj-bLh" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="NRA-ud-da5"/>
                             <constraint firstItem="REC-Pg-EUB" firstAttribute="top" secondItem="zuG-q6-Sja" secondAttribute="top" constant="16" id="O05-QE-ONE"/>
                             <constraint firstItem="GlS-6n-eIh" firstAttribute="top" secondItem="VPl-jj-bLh" secondAttribute="top" constant="-36" id="OIg-7W-oiV"/>
@@ -120,14 +124,19 @@
                             <constraint firstItem="3Yw-bl-z2N" firstAttribute="leading" secondItem="GlS-6n-eIh" secondAttribute="trailing" constant="16" id="byu-OF-5hv"/>
                             <constraint firstItem="brc-Nx-88w" firstAttribute="leading" secondItem="3Yw-bl-z2N" secondAttribute="leading" id="fKi-Rf-RJW"/>
                             <constraint firstItem="VXP-Oe-xqq" firstAttribute="leading" secondItem="Ap1-Aa-jG1" secondAttribute="leading" constant="325" id="fct-cA-h3l"/>
+                            <constraint firstItem="brc-Nx-88w" firstAttribute="top" secondItem="rlo-h3-Xjo" secondAttribute="bottom" constant="16" id="fw6-8h-9Pe"/>
+                            <constraint firstItem="rlo-h3-Xjo" firstAttribute="centerX" secondItem="Ap1-Aa-jG1" secondAttribute="centerX" id="gLR-vX-Epg"/>
                             <constraint firstItem="VXP-Oe-xqq" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3Yw-bl-z2N" secondAttribute="trailing" id="h5n-x0-I0G"/>
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="bottom" secondItem="VPl-jj-bLh" secondAttribute="bottom" constant="16" id="hNO-1i-Nyx"/>
                             <constraint firstItem="UNz-Ap-5AI" firstAttribute="top" secondItem="zuG-q6-Sja" secondAttribute="top" constant="16" id="i6j-iB-Thk"/>
                             <constraint firstItem="czB-p7-Yfj" firstAttribute="leading" secondItem="VPl-jj-bLh" secondAttribute="leading" constant="8" id="ic3-VQ-9wA"/>
+                            <constraint firstItem="rlo-h3-Xjo" firstAttribute="top" secondItem="Ap1-Aa-jG1" secondAttribute="top" constant="96" id="khd-QH-vid"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="trailing" secondItem="zuG-q6-Sja" secondAttribute="trailing" id="mcE-4f-qfR"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="bottom" secondItem="zuG-q6-Sja" secondAttribute="bottom" id="mxA-IJ-Hwo"/>
+                            <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="rlo-h3-Xjo" secondAttribute="trailing" constant="16" id="qWh-pp-63w"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="brc-Nx-88w" secondAttribute="trailing" constant="20" symbolic="YES" id="qjL-5O-DKx"/>
                             <constraint firstItem="1Ik-l6-HL0" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="r2C-uG-7PO"/>
+                            <constraint firstItem="rlo-h3-Xjo" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="sVs-Dz-tf2"/>
                             <constraint firstItem="VXP-Oe-xqq" firstAttribute="centerY" secondItem="3Yw-bl-z2N" secondAttribute="centerY" id="uqY-1A-gCO"/>
                             <constraint firstItem="VPl-jj-bLh" firstAttribute="trailing" secondItem="czB-p7-Yfj" secondAttribute="trailing" constant="8" id="xGy-Zn-6hd"/>
                         </constraints>
@@ -137,6 +146,11 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="analysisAreaBottomConstraint" destination="fw6-8h-9Pe" id="DDA-ri-z2s"/>
+                        <outlet property="analysisAreaLeftConstraint" destination="sVs-Dz-tf2" id="36F-7b-dZ8"/>
+                        <outlet property="analysisAreaRightConstraint" destination="qWh-pp-63w" id="ZpQ-Uu-IDX"/>
+                        <outlet property="analysisAreaTopConstraint" destination="khd-QH-vid" id="fSF-uv-xXM"/>
+                        <outlet property="analysisAreaView" destination="rlo-h3-Xjo" id="KKe-SC-CxB"/>
                         <outlet property="cameraView" destination="ter-Ge-ihH" id="wyp-13-fOG"/>
                         <outlet property="confidenceAccuracyLabel" destination="VXP-Oe-xqq" id="veg-v4-Jfu"/>
                         <outlet property="confidenceSlider" destination="3Yw-bl-z2N" id="DY7-Cp-vHa"/>

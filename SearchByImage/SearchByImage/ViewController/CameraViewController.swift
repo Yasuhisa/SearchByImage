@@ -19,12 +19,23 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     private let visionRequest = VisionRequest()
     
+    private lazy var defaultAnalysisAreaTopConstraint = self.analysisAreaTopConstraint.constant
+    private lazy var defaultAnalysisAreaLeftConstraint = self.analysisAreaLeftConstraint.constant
+    private lazy var defaultAnalysisAreaRightConstraint = self.analysisAreaRightConstraint.constant
+    private lazy var defaultAnalysisAreaBottomConstraint = self.analysisAreaBottomConstraint.constant
+    
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var analysisAreaView: UIView!
     @IBOutlet weak var detectedLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var confidenceSlider: UISlider!
     @IBOutlet weak var describeLabel: UILabel!
     @IBOutlet weak var confidenceAccuracyLabel: UILabel!
+    
+    @IBOutlet weak var analysisAreaTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var analysisAreaLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var analysisAreaRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var analysisAreaBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -32,6 +43,18 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         self.cameraView.frame = view.frame
         setupCaptureSession()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(animateAnalysisArea),
+            name: .UIApplicationWillEnterForeground,
+            object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.animateAnalysisArea()
     }
     
     override func didReceiveMemoryWarning() {
@@ -135,6 +158,30 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     // MARK: - Private
+    @objc func animateAnalysisArea() {
+        self.view.layoutIfNeeded()
+        
+        if (self.analysisAreaTopConstraint.constant == self.defaultAnalysisAreaTopConstraint) {
+            self.analysisAreaTopConstraint.constant = self.defaultAnalysisAreaTopConstraint + 16.0
+            self.analysisAreaLeftConstraint.constant = self.defaultAnalysisAreaLeftConstraint + 16.0
+            self.analysisAreaRightConstraint.constant = self.defaultAnalysisAreaRightConstraint + 16.0
+            self.analysisAreaBottomConstraint.constant = self.defaultAnalysisAreaBottomConstraint + 16.0
+        } else {
+            self.analysisAreaTopConstraint.constant = self.defaultAnalysisAreaTopConstraint
+            self.analysisAreaLeftConstraint.constant = self.defaultAnalysisAreaLeftConstraint
+            self.analysisAreaRightConstraint.constant = self.defaultAnalysisAreaRightConstraint
+            self.analysisAreaBottomConstraint.constant = self.defaultAnalysisAreaBottomConstraint
+        }
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.0,
+            options: [.repeat, .autoreverse],
+            animations: {
+                self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
     func showWalkthroughViewController() {
         let storybord = UIStoryboard(name: Constants.STORYBOARD_WALKTHROUGH, bundle: nil)
         if let walkthroughViewController = storybord.instantiateInitialViewController() as? WalkthroughViewController {
