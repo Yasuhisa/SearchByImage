@@ -102,6 +102,7 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="1Ik-l6-HL0" firstAttribute="top" secondItem="zuG-q6-Sja" secondAttribute="top" constant="16" id="7Yp-04-YJA"/>
                             <constraint firstItem="czB-p7-Yfj" firstAttribute="top" secondItem="VPl-jj-bLh" secondAttribute="top" constant="8" id="EhY-sU-DSR"/>
@@ -131,6 +132,9 @@
                             <constraint firstItem="VPl-jj-bLh" firstAttribute="trailing" secondItem="czB-p7-Yfj" secondAttribute="trailing" constant="8" id="xGy-Zn-6hd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zuG-q6-Sja"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zqj-oo-mEQ" appends="YES" id="iuP-xL-A60"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="ter-Ge-ihH" id="wyp-13-fOG"/>
@@ -142,6 +146,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tB5-4i-h8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="zqj-oo-mEQ">
+                    <connections>
+                        <action selector="cameraViewPinched:" destination="chZ-Iv-dsz" id="qZX-Xv-0S4"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="973.60000000000002" y="184.85757121439281"/>
         </scene>

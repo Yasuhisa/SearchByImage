@@ -64,6 +64,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         self.confidenceAccuracyLabel.text = "\(confidenceAccuracy)%"
     }
     
+    @IBAction func cameraViewPinched(_ sender: UIPinchGestureRecognizer) {
+        if sender.state != .changed {
+            return
+        }
+        
+        zoomCameraView(pinchGestureRecognizer: sender)
+    }
+    
     // MARK: - Video Capture Session
     func setupCaptureSession() {
         let captureSession = AVCaptureSession()
@@ -189,6 +197,27 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         alertController.addAction(okAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func zoomCameraView(pinchGestureRecognizer: UIPinchGestureRecognizer) {
+        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
+        
+        let maxZoomFactor: CGFloat = captureDevice.activeFormat.videoMaxZoomFactor
+        let pinchVelocityDividerFactor: CGFloat = 5.0
+        let delay: CGFloat = 5.0
+        
+        do {
+            try captureDevice.lockForConfiguration()
+            
+            defer {
+                captureDevice.unlockForConfiguration()
+            }
+            
+            let desiredZoomFactor = captureDevice.videoZoomFactor + atan2(pinchGestureRecognizer.velocity, pinchVelocityDividerFactor) / delay
+            captureDevice.videoZoomFactor = max(1.0, min(desiredZoomFactor, maxZoomFactor))
+        } catch {
+            print(error)
+        }
     }
     
 }
