@@ -17,7 +17,6 @@
 		4D9126092137D1E3000E22C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9126082137D1E3000E22C8 /* Assets.xcassets */; };
 		4D962CE421295E0D00AF0663 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D962CE321295E0D00AF0663 /* CameraViewController.swift */; };
 		4DA3E748213E6EA6005B8AEC /* VisionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3E747213E6EA6005B8AEC /* VisionRequest.swift */; };
-		4DA3E74C213E814A005B8AEC /* UIImage+ConvertCVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3E74B213E814A005B8AEC /* UIImage+ConvertCVPixelBuffer.swift */; };
 		AEA7E0174ECD86EFB9FC372A /* Pods_SearchByImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951D3969BF52904D3246A9F2 /* Pods_SearchByImage.framework */; };
 		B573C6BE211051A600C53B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C6BD211051A600C53B28 /* AppDelegate.swift */; };
 		B573C6C5211051A600C53B28 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C6C3211051A600C53B28 /* Camera.storyboard */; };
@@ -37,7 +36,6 @@
 		4D962CE321295E0D00AF0663 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		4DA3E742213E686A005B8AEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
 		4DA3E747213E6EA6005B8AEC /* VisionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionRequest.swift; sourceTree = "<group>"; };
-		4DA3E74B213E814A005B8AEC /* UIImage+ConvertCVPixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ConvertCVPixelBuffer.swift"; sourceTree = "<group>"; };
 		4DCF76B1213E6701004C7099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		951D3969BF52904D3246A9F2 /* Pods_SearchByImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchByImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C6BA211051A600C53B28 /* SearchByImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchByImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,14 +92,6 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		4DA3E74A213E8042005B8AEC /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				4DA3E74B213E814A005B8AEC /* UIImage+ConvertCVPixelBuffer.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		B573C6B1211051A600C53B28 = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				B573C6D5211053C900C53B28 /* Storyboard */,
-				4DA3E74A213E8042005B8AEC /* Extension */,
 				4DA3E746213E6E81005B8AEC /* Request */,
 				B573C6D82110582300C53B28 /* ViewController */,
 				4D962CE521297D7F00AF0663 /* MLModel */,
@@ -284,7 +273,6 @@
 				4D492E2A2137C58300B2E997 /* WalkthroughEndPageViewController.swift in Sources */,
 				4D962CE421295E0D00AF0663 /* CameraViewController.swift in Sources */,
 				4D492E152137B63600B2E997 /* Constansts.swift in Sources */,
-				4DA3E74C213E814A005B8AEC /* UIImage+ConvertCVPixelBuffer.swift in Sources */,
 				4DA3E748213E6EA6005B8AEC /* VisionRequest.swift in Sources */,
 				4D492E262137C52F00B2E997 /* WalkthroughFirstPageViewController.swift in Sources */,
 			);

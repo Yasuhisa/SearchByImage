@@ -48,7 +48,7 @@ class VisionRequest: NSObject {
             completionHandler?(results, error)
         }
         
-        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([coreMLRequest])
+        try? VNImageRequestHandler(cgImage: cgImage, options: [:]).perform([coreMLRequest])
     }
     
 }
