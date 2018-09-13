@@ -40,7 +40,7 @@ class VisionRequest: NSObject {
     ///   - image: UIImage
     ///   - completionHandler: use observation results this closure
     func observeFromImage(image: UIImage, completionHandler: CompletionHandler) {
-        guard let pixelBuffer = image.pixelBuffer() else { return }
+        guard let cgImage = image.cgImage else { return }
         
         let coreMLRequest = VNCoreMLRequest(model: model) { (request, error) in
             guard let results = request.results as? [VNClassificationObservation] else { return }

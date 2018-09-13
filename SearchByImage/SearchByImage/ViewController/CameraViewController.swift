@@ -117,7 +117,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        visionRequest.observeFromSampleBuffer(sampleBuffer: sampleBuffer) { (results, error) in
+        self.visionRequest.observeFromSampleBuffer(sampleBuffer: sampleBuffer, rect: ) { (results, error) in
             // firstResult
             guard let firstResult = results.first else { return }
             
@@ -140,7 +140,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         self.segmentedControl.selectedSegmentIndex = SearchMode.picture.rawValue
         
-        visionRequest.observeFromImage(image: originalImage) { (results, error) in
+        self.visionRequest.observeFromImage(image: originalImage) { (results, error) in
             // firstResult
             guard let firstResult = results.first else { return }
             
