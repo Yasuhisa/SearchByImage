@@ -18,6 +18,7 @@ enum SearchMode: Int {
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let visionRequest = VisionRequest()
+    private var targetRect: CGRect?
     
     private lazy var defaultAnalysisAreaTopConstraint = self.analysisAreaTopConstraint.constant
     private lazy var defaultAnalysisAreaLeftConstraint = self.analysisAreaLeftConstraint.constant
@@ -41,7 +42,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.cameraView.frame = view.frame
+        self.cameraView.frame = self.view.frame
+        self.targetRect = self.analysisAreaView.frame
+
         setupCaptureSession()
         
         NotificationCenter.default.addObserver(
@@ -117,7 +120,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        self.visionRequest.observeFromSampleBuffer(sampleBuffer: sampleBuffer, rect: ) { (results, error) in
+        self.visionRequest.observeFromSampleBuffer(sampleBuffer: sampleBuffer, targetRect: self.targetRect ?? UIScreen.main.bounds) { (results, error) in
             // firstResult
             guard let firstResult = results.first else { return }
             
