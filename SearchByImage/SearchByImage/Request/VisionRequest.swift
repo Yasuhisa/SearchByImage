@@ -16,22 +16,28 @@ typealias CompletionHandler = (([VNClassificationObservation], Error?) -> ())?
 class VisionRequest: NSObject {
     
     private lazy var model = VNCoreMLModel(for: Inceptionv3().model)
+    private let context = CIContext()
     
     /// Observe CoreMLRequest results from CMSampleBuffer.
     ///
     /// - Parameters:
     ///   - sampleBuffer: captured buffer
+    ///   - targetRect: target rect
     ///   - completionHandler: use observation results this closure
-    func observeFromSampleBuffer(sampleBuffer: CMSampleBuffer, completionHandler: CompletionHandler) -> Void {
+    func observeFromSampleBuffer(sampleBuffer: CMSampleBuffer, targetRect: CGRect, completionHandler: CompletionHandler) -> Void {
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
-        let coreMLRequest = VNCoreMLRequest(model: model) { (request, error) in
+        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+        
+        guard let cgImage = self.context.createCGImage(ciImage, from: targetRect) else { return }
+        
+        let coreMLRequest = VNCoreMLRequest(model: self.model) { (request, error) in
             guard let results = request.results as? [VNClassificationObservation] else { return }
             
             completionHandler?(results, error)
         }
         
-        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([coreMLRequest])
+        try? VNImageRequestHandler(cgImage: cgImage, options: [:]).perform([coreMLRequest])
     }
     
     /// Observe CoreMLRequest results from UIImage.
@@ -40,15 +46,15 @@ class VisionRequest: NSObject {
     ///   - image: UIImage
     ///   - completionHandler: use observation results this closure
     func observeFromImage(image: UIImage, completionHandler: CompletionHandler) {
-        guard let pixelBuffer = image.pixelBuffer() else { return }
+        guard let cgImage = image.cgImage else { return }
         
-        let coreMLRequest = VNCoreMLRequest(model: model) { (request, error) in
+        let coreMLRequest = VNCoreMLRequest(model: self.model) { (request, error) in
             guard let results = request.results as? [VNClassificationObservation] else { return }
             
             completionHandler?(results, error)
         }
         
-        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([coreMLRequest])
+        try? VNImageRequestHandler(cgImage: cgImage, options: [:]).perform([coreMLRequest])
     }
     
 }

@@ -18,20 +18,46 @@ enum SearchMode: Int {
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let visionRequest = VisionRequest()
+    private var targetRect: CGRect?
+    
+    private lazy var defaultAnalysisAreaTopConstraint = self.analysisAreaTopConstraint.constant
+    private lazy var defaultAnalysisAreaLeftConstraint = self.analysisAreaLeftConstraint.constant
+    private lazy var defaultAnalysisAreaRightConstraint = self.analysisAreaRightConstraint.constant
+    private lazy var defaultAnalysisAreaBottomConstraint = self.analysisAreaBottomConstraint.constant
     
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var analysisAreaView: UIView!
     @IBOutlet weak var detectedLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var confidenceSlider: UISlider!
     @IBOutlet weak var describeLabel: UILabel!
     @IBOutlet weak var confidenceAccuracyLabel: UILabel!
     
+    @IBOutlet weak var analysisAreaTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var analysisAreaLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var analysisAreaRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var analysisAreaBottomConstraint: NSLayoutConstraint!
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.cameraView.frame = view.frame
+        self.cameraView.frame = self.view.frame
+        self.targetRect = self.analysisAreaView.frame
+
         setupCaptureSession()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(animateAnalysisArea),
+            name: .UIApplicationWillEnterForeground,
+            object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.animateAnalysisArea()
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,7 +120,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        visionRequest.observeFromSampleBuffer(sampleBuffer: sampleBuffer) { (results, error) in
+        self.visionRequest.observeFromSampleBuffer(sampleBuffer: sampleBuffer, targetRect: self.targetRect ?? UIScreen.main.bounds) { (results, error) in
             // firstResult
             guard let firstResult = results.first else { return }
             
@@ -117,7 +143,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         self.segmentedControl.selectedSegmentIndex = SearchMode.picture.rawValue
         
-        visionRequest.observeFromImage(image: originalImage) { (results, error) in
+        self.visionRequest.observeFromImage(image: originalImage) { (results, error) in
             // firstResult
             guard let firstResult = results.first else { return }
             
@@ -135,6 +161,30 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     // MARK: - Private
+    @objc func animateAnalysisArea() {
+        self.view.layoutIfNeeded()
+        
+        if (self.analysisAreaTopConstraint.constant == self.defaultAnalysisAreaTopConstraint) {
+            self.analysisAreaTopConstraint.constant = self.defaultAnalysisAreaTopConstraint + 16.0
+            self.analysisAreaLeftConstraint.constant = self.defaultAnalysisAreaLeftConstraint + 16.0
+            self.analysisAreaRightConstraint.constant = self.defaultAnalysisAreaRightConstraint + 16.0
+            self.analysisAreaBottomConstraint.constant = self.defaultAnalysisAreaBottomConstraint + 16.0
+        } else {
+            self.analysisAreaTopConstraint.constant = self.defaultAnalysisAreaTopConstraint
+            self.analysisAreaLeftConstraint.constant = self.defaultAnalysisAreaLeftConstraint
+            self.analysisAreaRightConstraint.constant = self.defaultAnalysisAreaRightConstraint
+            self.analysisAreaBottomConstraint.constant = self.defaultAnalysisAreaBottomConstraint
+        }
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.0,
+            options: [.repeat, .autoreverse],
+            animations: {
+                self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
     func showWalkthroughViewController() {
         let storybord = UIStoryboard(name: Constants.STORYBOARD_WALKTHROUGH, bundle: nil)
         if let walkthroughViewController = storybord.instantiateInitialViewController() as? WalkthroughViewController {
