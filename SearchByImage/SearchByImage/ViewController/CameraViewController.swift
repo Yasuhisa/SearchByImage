@@ -28,6 +28,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var analysisAreaView: UIView!
+    @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var detectedLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var confidenceSlider: UISlider!
@@ -43,7 +44,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.cameraView.frame = self.view.frame
         self.targetRect = self.analysisAreaView.frame
 
         setupCaptureSession()
