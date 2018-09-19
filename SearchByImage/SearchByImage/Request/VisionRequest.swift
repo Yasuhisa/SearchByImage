@@ -15,7 +15,7 @@ typealias CompletionHandler = (([VNClassificationObservation], Error?) -> ())?
 /// VisionRequest Class
 class VisionRequest: NSObject {
     
-    private lazy var model = VNCoreMLModel(for: Inceptionv3().model)
+    private let model = try? VNCoreMLModel(for: Inceptionv3().model)
     private let context = CIContext()
     
     /// Observe CoreMLRequest results from CMSampleBuffer.
@@ -31,7 +31,9 @@ class VisionRequest: NSObject {
         
         guard let cgImage = self.context.createCGImage(ciImage, from: targetRect) else { return }
         
-        let coreMLRequest = VNCoreMLRequest(model: self.model) { (request, error) in
+        guard let coreMLModel = self.model else { return }
+        
+        let coreMLRequest = VNCoreMLRequest(model: coreMLModel) { (request, error) in
             guard let results = request.results as? [VNClassificationObservation] else { return }
             
             completionHandler?(results, error)
@@ -48,7 +50,9 @@ class VisionRequest: NSObject {
     func observeFromImage(image: UIImage, completionHandler: CompletionHandler) {
         guard let cgImage = image.cgImage else { return }
         
-        let coreMLRequest = VNCoreMLRequest(model: self.model) { (request, error) in
+        guard let coreMLModel = self.model else { return }
+        
+        let coreMLRequest = VNCoreMLRequest(model: coreMLModel) { (request, error) in
             guard let results = request.results as? [VNClassificationObservation] else { return }
             
             completionHandler?(results, error)
