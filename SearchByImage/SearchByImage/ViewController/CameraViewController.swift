@@ -19,6 +19,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     private let visionRequest = VisionRequest()
     private var targetRect: CGRect?
+    private var barStyleDefault: Bool = true
     
     private lazy var defaultAnalysisAreaTopConstraint = self.analysisAreaTopConstraint.constant
     private lazy var defaultAnalysisAreaLeftConstraint = self.analysisAreaLeftConstraint.constant
@@ -58,6 +59,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewDidAppear(animated)
         
         self.animateAnalysisArea()
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return self.barStyleDefault ? .lightContent : .default
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .fade
     }
     
     override func didReceiveMemoryWarning() {
@@ -136,10 +145,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        UIApplication.shared.statusBarStyle = .lightContent
-        
-        guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
         self.segmentedControl.selectedSegmentIndex = SearchMode.picture.rawValue
         
@@ -150,14 +157,17 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             DispatchQueue.main.async {
                 // Update UI in this block
                 self.detectedLabel.text = firstResult.identifier
-                picker.dismiss(animated: true, completion: nil)
+                picker.dismiss(animated: true) {
+                    self.barStyleDefault = false
+                }
             }
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        UIApplication.shared.statusBarStyle = .lightContent
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true) {
+            self.barStyleDefault = false
+        }
     }
     
     // MARK: - Private
@@ -218,8 +228,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     func showPhotoLibrary() {
-        UIApplication.shared.statusBarStyle = .default
-        
         PHPhotoLibrary.requestAuthorization { [weak self] status in
             if status == PHAuthorizationStatus.denied {
                 // Unauthorized
@@ -230,7 +238,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             imagePickerController.sourceType = .savedPhotosAlbum
             imagePickerController.delegate = self
             
-            self?.present(imagePickerController, animated: true, completion: nil)
+            self?.present(imagePickerController, animated: true, completion: {
+                self?.barStyleDefault = true
+            })
         }
     }
     
