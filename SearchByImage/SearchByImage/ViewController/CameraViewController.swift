@@ -50,7 +50,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(animateAnalysisArea),
-            name: .UIApplicationWillEnterForeground,
+            name: UIApplication.didEnterBackgroundNotification,
             object: nil)
     }
     
