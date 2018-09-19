@@ -28,6 +28,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var analysisAreaView: UIView!
+    @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var detectedLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var confidenceSlider: UISlider!
@@ -43,7 +44,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.cameraView.frame = self.view.frame
         self.targetRect = self.analysisAreaView.frame
 
         setupCaptureSession()
@@ -88,9 +88,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
-        if self.segmentedControl.selectedSegmentIndex == SearchMode.picture.rawValue {
+        switch self.segmentedControl.selectedSegmentIndex {
+        case SearchMode.movie.rawValue:
+            updateViewsHidden()
+        case SearchMode.picture.rawValue:
             self.detectedLabel.text = ""
             showPhotoLibrary()
+        default:
+            return
         }
     }
     
@@ -148,7 +153,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
-        self.segmentedControl.selectedSegmentIndex = SearchMode.picture.rawValue
+        self.previewImageView.image = originalImage
         
         self.visionRequest.observeFromImage(image: originalImage) { (results, error) in
             // firstResult
@@ -193,6 +198,18 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             animations: {
                 self.view.layoutIfNeeded()
         }, completion: nil)
+    }
+    
+    func updateViewsHidden() {
+        // movie mode appears
+        self.cameraView.isHidden = self.segmentedControl.selectedSegmentIndex != SearchMode.movie.rawValue
+        self.analysisAreaView.isHidden = self.segmentedControl.selectedSegmentIndex != SearchMode.movie.rawValue
+        self.describeLabel.isHidden = self.segmentedControl.selectedSegmentIndex != SearchMode.movie.rawValue
+        self.confidenceSlider.isHidden = self.segmentedControl.selectedSegmentIndex != SearchMode.movie.rawValue
+        self.confidenceAccuracyLabel.isHidden = self.segmentedControl.selectedSegmentIndex != SearchMode.movie.rawValue
+        
+        // picture mode appears
+        self.previewImageView.isHidden = self.segmentedControl.selectedSegmentIndex != SearchMode.picture.rawValue
     }
     
     func showWalkthroughViewController() {
@@ -240,6 +257,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
             self?.present(imagePickerController, animated: true, completion: {
                 self?.barStyleDefault = true
+                self?.segmentedControl.selectedSegmentIndex = SearchMode.picture.rawValue
+                self?.updateViewsHidden()
             })
         }
     }

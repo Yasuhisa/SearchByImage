@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="chZ-Iv-dsz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="chZ-Iv-dsz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +22,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HAY-58-H3e">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <view userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlo-h3-Xjo">
-                                <rect key="frame" x="16" y="96" width="343" height="350"/>
+                                <rect key="frame" x="16" y="96" width="343" height="350.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPl-jj-bLh">
@@ -68,14 +71,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精度（スライドで調節可、動画のみ）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brc-Nx-88w">
-                                <rect key="frame" x="60" y="462" width="294.5" height="22"/>
+                                <rect key="frame" x="60" y="462.5" width="294.5" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXP-Oe-xqq">
-                                <rect key="frame" x="325" y="497.5" width="35" height="22"/>
+                                <rect key="frame" x="325" y="498" width="35" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="zNg-Yf-I1p"/>
                                 </constraints>
@@ -85,7 +88,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Yw-bl-z2N">
-                                <rect key="frame" x="58" y="494" width="254" height="30"/>
+                                <rect key="frame" x="58" y="494.5" width="254" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="D2O-4j-D7Q"/>
                                     <constraint firstAttribute="height" constant="29" id="GMU-nG-otD"/>
@@ -108,8 +111,10 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="HAY-58-H3e" firstAttribute="leading" secondItem="ter-Ge-ihH" secondAttribute="leading" id="1b3-Zt-i7u"/>
                             <constraint firstItem="1Ik-l6-HL0" firstAttribute="top" secondItem="zuG-q6-Sja" secondAttribute="top" constant="16" id="7Yp-04-YJA"/>
                             <constraint firstItem="GlS-6n-eIh" firstAttribute="leading" secondItem="1Ik-l6-HL0" secondAttribute="trailing" constant="-22" id="97I-Kx-vCg"/>
+                            <constraint firstItem="HAY-58-H3e" firstAttribute="top" secondItem="ter-Ge-ihH" secondAttribute="top" id="Doc-v5-Hgn"/>
                             <constraint firstItem="czB-p7-Yfj" firstAttribute="top" secondItem="VPl-jj-bLh" secondAttribute="top" constant="8" id="EhY-sU-DSR"/>
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="VPl-jj-bLh" secondAttribute="trailing" constant="16" id="N4g-9O-QgO"/>
                             <constraint firstItem="VPl-jj-bLh" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="NRA-ud-da5"/>
@@ -117,8 +122,11 @@
                             <constraint firstItem="GlS-6n-eIh" firstAttribute="top" secondItem="VPl-jj-bLh" secondAttribute="top" constant="-36" id="OIg-7W-oiV"/>
                             <constraint firstItem="3Yw-bl-z2N" firstAttribute="centerY" secondItem="GlS-6n-eIh" secondAttribute="centerY" id="RBn-05-wL6"/>
                             <constraint firstItem="brc-Nx-88w" firstAttribute="top" secondItem="3Yw-bl-z2N" secondAttribute="top" constant="-32" id="Snk-kp-lYY"/>
+                            <constraint firstItem="ter-Ge-ihH" firstAttribute="bottom" secondItem="zuG-q6-Sja" secondAttribute="bottom" id="Swb-Xi-BdA"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" id="TJB-Fa-6x0"/>
                             <constraint firstItem="ter-Ge-ihH" firstAttribute="top" secondItem="Ap1-Aa-jG1" secondAttribute="top" id="TVK-VH-ch3"/>
+                            <constraint firstItem="ter-Ge-ihH" firstAttribute="trailing" secondItem="zuG-q6-Sja" secondAttribute="trailing" id="UYt-L0-NxT"/>
+                            <constraint firstItem="HAY-58-H3e" firstAttribute="height" secondItem="Ap1-Aa-jG1" secondAttribute="height" id="X3Z-5I-TmY"/>
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="REC-Pg-EUB" secondAttribute="trailing" constant="16" id="Yu2-1E-pYf"/>
                             <constraint firstItem="UNz-Ap-5AI" firstAttribute="centerX" secondItem="Ap1-Aa-jG1" secondAttribute="centerX" id="Zzr-i6-gc0"/>
                             <constraint firstItem="3Yw-bl-z2N" firstAttribute="leading" secondItem="GlS-6n-eIh" secondAttribute="trailing" constant="16" id="byu-OF-5hv"/>
@@ -136,9 +144,12 @@
                             <constraint firstItem="zuG-q6-Sja" firstAttribute="trailing" secondItem="rlo-h3-Xjo" secondAttribute="trailing" constant="16" id="qWh-pp-63w"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="brc-Nx-88w" secondAttribute="trailing" constant="20" symbolic="YES" id="qjL-5O-DKx"/>
                             <constraint firstItem="1Ik-l6-HL0" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="r2C-uG-7PO"/>
+                            <constraint firstItem="ter-Ge-ihH" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" id="rj1-ZF-9Tg"/>
                             <constraint firstItem="rlo-h3-Xjo" firstAttribute="leading" secondItem="zuG-q6-Sja" secondAttribute="leading" constant="16" id="sVs-Dz-tf2"/>
+                            <constraint firstItem="HAY-58-H3e" firstAttribute="width" secondItem="Ap1-Aa-jG1" secondAttribute="width" id="tgF-fM-dIO"/>
                             <constraint firstItem="VXP-Oe-xqq" firstAttribute="centerY" secondItem="3Yw-bl-z2N" secondAttribute="centerY" id="uqY-1A-gCO"/>
                             <constraint firstItem="VPl-jj-bLh" firstAttribute="trailing" secondItem="czB-p7-Yfj" secondAttribute="trailing" constant="8" id="xGy-Zn-6hd"/>
+                            <constraint firstItem="ter-Ge-ihH" firstAttribute="top" secondItem="Ap1-Aa-jG1" secondAttribute="top" id="zQ8-PJ-Mvp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zuG-q6-Sja"/>
                         <connections>
@@ -156,6 +167,7 @@
                         <outlet property="confidenceSlider" destination="3Yw-bl-z2N" id="DY7-Cp-vHa"/>
                         <outlet property="describeLabel" destination="brc-Nx-88w" id="pDT-wq-CSg"/>
                         <outlet property="detectedLabel" destination="czB-p7-Yfj" id="hZq-4m-bmJ"/>
+                        <outlet property="previewImageView" destination="HAY-58-H3e" id="gNm-hU-17y"/>
                         <outlet property="segmentedControl" destination="UNz-Ap-5AI" id="iH4-1F-afU"/>
                     </connections>
                 </viewController>
